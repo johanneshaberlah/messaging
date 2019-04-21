@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package net.plaria.messaging.proto;
+
+message Message {
+  int64 id = 1;
+  string key = 2;
+  string message = 3;
+}
+
+enum ErrorState {
+  SUCCESS = 0;
+  ERROR = 1;
+}
+
+message MessageResponse {
+  ErrorState error_state = 1;
+  Message message = 2;
+}
+
+message ProtoInt {
+  int32 value = 1;
+}
+
+message ProtoString {
+  string value = 1;
+}
+
+service MessageService {
+  rpc findMessageById (ProtoInt) returns (MessageResponse);
+  rpc findMessageByKey (ProtoString) returns (MessageResponse);
+}
