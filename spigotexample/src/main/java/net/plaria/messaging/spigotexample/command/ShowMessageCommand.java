@@ -2,6 +2,7 @@ package net.plaria.messaging.spigotexample.command;
 
 import com.google.inject.Inject;
 import net.plaria.messaging.client.MessagingService;
+import net.plaria.messaging.proto.Messaging;
 import net.plaria.messaging.spigotexample.FutureCallbacks;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,7 +21,11 @@ public class ShowMessageCommand implements CommandExecutor {
     }
     String key = strings[0];
     FutureCallbacks.create(this.messagingService.findMessageByKey(key), messageResponse -> {
-      commandSender.sendMessage(messageResponse.getMessage().getMessage());
+      if (messageResponse.getErrorState().equals(Messaging.ErrorState.ERROR)){
+        commandSender.sendMessage("Diese Nachricht existiert nicht!");
+        return;
+      }
+      commandSender.sendMessage("Nachricht: " + messageResponse.getMessage().getMessage());
     }, Throwable::printStackTrace);
     return false;
   }
