@@ -11,8 +11,9 @@ public interface MessagingService {
 
   ListenableFuture<String> getMessage(String key, String... args);
 
-  String getMessageBlocking(String key, String... args) throws ExecutionException, InterruptedException;
+  @Deprecated
+  String getMessageBlocking(String key, String... args)
+      throws ExecutionException, InterruptedException;
 
   void shutdown();
-
 }

@@ -1,4 +1,4 @@
-name: SpigotExample
+name: BungeeCordExample
 main: net.plaria.messaging.bungeecordexample.BungeeCordExample
 version: 1.0
 author: Exceptionpirat
