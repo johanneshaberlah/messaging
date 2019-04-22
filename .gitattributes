@@ -1,0 +1,13 @@
+# Test sources should not be exported to users.
+/src/test export-ignore
+
+# Those files are obviously not important for users.
+/.gitattributes export-ignore
+/.gitignore export-ignore
+
+# The README should only be for the actual online repository.
+/assets export-ignore
+/README.md export-ignore
+
+# Scripts that are just for development:
+/scripts/dev-tool-*.sh export-ignore
