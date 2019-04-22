@@ -1,6 +1,5 @@
-package net.plaria.messaging.spigotexample;
+package net.plaria.messaging.bungeecordexample;
 
-import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -15,9 +14,6 @@ public class FutureCallbacks {
       ListenableFuture<T> listenableFuture,
       Consumer<T> consumer,
       Consumer<Throwable> throwableConsumer) {
-    Preconditions.checkNotNull(listenableFuture);
-    Preconditions.checkNotNull(consumer);
-    Preconditions.checkNotNull(throwableConsumer);
     Futures.addCallback(
         listenableFuture,
         new FutureCallback<T>() {

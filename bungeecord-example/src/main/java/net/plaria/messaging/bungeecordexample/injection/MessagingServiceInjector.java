@@ -1,7 +1,6 @@
-package net.plaria.messaging.spigotexample.injection;
+package net.plaria.messaging.bungeecordexample.injection;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
 import net.plaria.messaging.client.MessagingClient;
 import net.plaria.messaging.client.MessagingService;
 
@@ -12,13 +11,12 @@ public class MessagingServiceInjector extends AbstractModule {
   private MessagingServiceInjector() {}
 
   @Override
-  protected void configure() {}
-
-  @Provides
-  MessagingService messagingService() {
-    return MessagingClient.create(InetSocketAddress.createUnresolved("localhost", 35743))
-        .connect()
-        .getMessagingService();
+  protected void configure() {
+    this.bind(MessagingService.class)
+        .toInstance(
+            MessagingClient.create(InetSocketAddress.createUnresolved("localhost", 6565))
+                .connect()
+                .getMessagingService());
   }
 
   public static MessagingServiceInjector create() {

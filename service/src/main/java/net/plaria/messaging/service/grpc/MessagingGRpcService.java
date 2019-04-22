@@ -41,6 +41,7 @@ public class MessagingGRpcService extends MessageServiceGrpc.MessageServiceImplB
   @Override
   public void findMessageByKey(
       Messaging.ProtoString request, StreamObserver<Messaging.MessageResponse> responseObserver) {
+    System.out.println("Received request for key " + request.getValue());
     Optional<Message> message = this.messageRepository.findByKey(request.getValue());
     if (message.isPresent()) {
       responseObserver.onNext(

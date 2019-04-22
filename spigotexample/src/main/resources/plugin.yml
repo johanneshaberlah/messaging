@@ -1,6 +1,0 @@
-name: SpigotExample
-main: net.plaria.messaging.spigotexample.SpigotExample
-version: 1.0
-author: Exceptionpirat
-commands:
-  showmessage:

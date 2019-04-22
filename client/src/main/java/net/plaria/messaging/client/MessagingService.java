@@ -6,4 +6,7 @@ import net.plaria.messaging.proto.Messaging;
 public interface MessagingService {
 
   ListenableFuture<Messaging.MessageResponse> findMessageByKey(String key);
+
+  void shutdown();
+
 }
