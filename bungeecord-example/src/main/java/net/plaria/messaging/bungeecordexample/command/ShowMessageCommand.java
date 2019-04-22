@@ -1,6 +1,7 @@
 package net.plaria.messaging.bungeecordexample.command;
 
 import com.google.inject.Inject;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.plugin.Command;
 import net.plaria.messaging.client.MessagingService;
@@ -29,7 +30,7 @@ public class ShowMessageCommand extends Command {
             sender.sendMessage("Diese Nachricht existiert nicht!");
             return;
           }
-          sender.sendMessage("Nachricht: " + messageResponse.getMessage().getMessage());
+          sender.sendMessage("Nachricht: " + ChatColor.translateAlternateColorCodes('&', messageResponse.getMessage().getMessage()));
         },
         Throwable::printStackTrace);
   }
