@@ -23,12 +23,11 @@ public class MessagingClient {
             .usePlaintext()
             .keepAliveWithoutCalls(true)
             .build();
-    this.messagingService = GRpcMessagingService.create(channel);
     return this;
   }
 
   public MessagingService createCached() {
-    return CachedMessagingService.create(this.messagingService);
+    return CachedMessagingService.create(this.createdUncached());
   }
 
   public ManagedChannel getChannel() {
@@ -36,7 +35,7 @@ public class MessagingClient {
   }
 
   public MessagingService createdUncached() {
-    return messagingService;
+    return GRpcMessagingService.create(channel);
   }
 
   public static MessagingClient create(InetSocketAddress inetSocketAddress) {
