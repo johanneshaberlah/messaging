@@ -35,7 +35,7 @@ public class MessagingClient {
     return channel;
   }
 
-  public MessagingService getMessagingService() {
+  public MessagingService createdUncached() {
     return messagingService;
   }
 
