@@ -16,9 +16,7 @@ public class MessagingClient {
     this.inetSocketAddress = inetSocketAddress;
   }
 
-
   public MessagingClient connect() {
-    System.out.println("Connecting to " + inetSocketAddress.getHostName() + "...");
     this.channel =
         NettyChannelBuilder.forAddress(
                 this.inetSocketAddress.getHostName(), this.inetSocketAddress.getPort())
@@ -26,13 +24,11 @@ public class MessagingClient {
             .keepAliveWithoutCalls(true)
             .build();
     this.messagingService = GRpcMessagingService.create(channel);
-    System.out.println(
-        "Connected to "
-            + this.inetSocketAddress.getHostName()
-            + " on "
-            + this.inetSocketAddress.getPort()
-            + ".");
     return this;
+  }
+
+  public MessagingService createCached() {
+    return CachedMessagingService.create(this.messagingService);
   }
 
   public ManagedChannel getChannel() {

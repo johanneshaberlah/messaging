@@ -16,7 +16,7 @@ public class MessagingServiceInjector extends AbstractModule {
         .toInstance(
             MessagingClient.create(InetSocketAddress.createUnresolved("localhost", 6565))
                 .connect()
-                .getMessagingService());
+                .createCached());
   }
 
   public static MessagingServiceInjector create() {
